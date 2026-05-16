@@ -3,7 +3,7 @@ title: "RustのスマートポインタBox/Rc/Arcを手を動かして理解す�
 emoji: "📦"
 type: "tech"
 topics: ["rust"]
-published: false
+published: true
 ---
 
 # RustのスマートポインタBox/Rc/Arcを手を動かして理解する

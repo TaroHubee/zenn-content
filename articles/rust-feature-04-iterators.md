@@ -3,7 +3,7 @@ title: "Rustのイテレータとクロージャを手を動かして理解す�
 emoji: "🔁"
 type: "tech"
 topics: ["rust"]
-published: false
+published: true
 ---
 
 # Rustのイテレータとクロージャを手を動かして理解する
