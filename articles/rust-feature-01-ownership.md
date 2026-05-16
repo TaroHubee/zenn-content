@@ -3,7 +3,7 @@ title: "Rustの所有権・借用・ライフタイムを手を動かして理�
 emoji: "🦀"
 type: "tech"
 topics: ["rust"]
-published: false
+published: true
 ---
 
 # Rustの所有権・借用・ライフタイムを手を動かして理解する
