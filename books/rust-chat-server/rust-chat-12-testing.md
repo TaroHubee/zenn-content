@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #12 — #[tokio::test] で非�
 emoji: "✅"
 type: "tech"
 topics: ["rust", "tokio"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #12 — #[tokio::test] で非同期テストを書く

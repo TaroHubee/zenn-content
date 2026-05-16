@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #2 — TCPサーバーの基礎
 emoji: "🌐"
 type: "tech"
 topics: ["rust", "tcp"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #2 — TCPサーバーの基礎

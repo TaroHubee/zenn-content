@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #11 — tracing でログを本
 emoji: "📝"
 type: "tech"
 topics: ["rust"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #11 — tracing でログを本格化する

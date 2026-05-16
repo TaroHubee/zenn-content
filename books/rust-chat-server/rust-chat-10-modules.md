@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #10 — Rust のモジュール
 emoji: "📦"
 type: "tech"
 topics: ["rust"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #10 — Rust のモジュールシステムとファイル分割

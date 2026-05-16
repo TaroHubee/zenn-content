@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #1 — 所有権と借用"
 emoji: "🦀"
 type: "tech"
 topics: ["rust"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #1 — 所有権と借用

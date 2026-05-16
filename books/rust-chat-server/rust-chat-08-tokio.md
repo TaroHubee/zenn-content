@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #8 — 同期版を Tokio 非�
 emoji: "🔄"
 type: "tech"
 topics: ["rust", "tokio", "tcp"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #8 — 同期版を Tokio 非同期版へ書き換える

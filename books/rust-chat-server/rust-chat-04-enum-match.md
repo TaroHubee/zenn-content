@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #4 — enumとmatchでコマン
 emoji: "🔀"
 type: "tech"
 topics: ["rust"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #4 — enumとmatchでコマンド処理

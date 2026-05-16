@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #6 — Arc・Mutex・mpsc で�
 emoji: "📡"
 type: "tech"
 topics: ["rust"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #6 — Arc・Mutex・mpsc でブロードキャスト

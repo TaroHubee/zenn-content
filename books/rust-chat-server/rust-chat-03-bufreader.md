@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #3 — BufReaderで行単位の
 emoji: "📖"
 type: "tech"
 topics: ["rust", "tcp"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #3 — BufReaderで行単位の読み書き

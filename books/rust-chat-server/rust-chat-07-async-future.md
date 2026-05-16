@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #7 — asyncとFutureの正体�
 emoji: "⚡"
 type: "tech"
 topics: ["rust", "tokio"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #7 — asyncとFutureの正体を理解する

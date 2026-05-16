@@ -3,7 +3,7 @@ title: "Rustでチャットサーバーを作る #9 — tokio::select! で複数
 emoji: "🎯"
 type: "tech"
 topics: ["rust", "tokio"]
-published: false
+published: true
 ---
 
 # Rustでチャットサーバーを作る #9 — tokio::select! で複数の Future を同時に待つ
