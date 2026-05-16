@@ -1,0 +1,18 @@
+title: "Rustでチャットサーバーを作る"
+summary: "Rust初心者がTCPチャットサーバーを実装しながら、所有権・スレッド・非同期処理を学んだ記録"
+topics: ["rust"]
+published: false
+price: 0
+chapters:
+  - 01-ownership
+  - 02-tcp-server
+  - 03-bufreader
+  - 04-enum-match
+  - 05-threads
+  - 06-arc-mutex
+  - 07-async-future
+  - 08-tokio
+  - 09-select
+  - 10-modules
+  - 11-tracing
+  - 12-testing
