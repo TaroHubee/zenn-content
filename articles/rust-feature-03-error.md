@@ -3,7 +3,7 @@ title: "RustのエラーハンドリングをResult/Option/thiserrorで理解す
 emoji: "🚨"
 type: "tech"
 topics: ["rust"]
-published: false
+published: true
 ---
 
 # RustのエラーハンドリングをResult/Option/thiserrorで理解する
