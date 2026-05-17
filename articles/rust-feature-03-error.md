@@ -3,10 +3,15 @@ title: "RustのエラーハンドリングをResult/Option/thiserrorで理解す
 emoji: "🚨"
 type: "tech"
 topics: ["rust"]
-published: true
+published: false
 ---
 
 # RustのエラーハンドリングをResult/Option/thiserrorで理解する
+
+:::message
+**2026/05/17 修正**
+`?` 演算子の説明を修正しました（詳細は各箇所を参照）。
+:::
 
 Rustには例外（Exception）がありません。その代わりに、エラーは**戻り値**として明示的に扱います。最初は「毎回エラーを処理するのが面倒」と感じますが、慣れると「エラーが起きうる箇所が一目で分かる」という安心感に変わります。
 
@@ -98,10 +103,14 @@ let content = fs::read_to_string("username.txt")?;
 
 // コンパイラが展開するイメージ
 let content = match fs::read_to_string("username.txt") {
-    Ok(val) => val,           // 成功 → val を content に束縛して続行
-    Err(e)  => return Err(e), // 失敗 → 即 return、呼び出し元に Err が渡る
+    Ok(val) => val,                        // 成功 → val を content に束縛して続行
+    Err(e)  => return Err(From::from(e)), // 失敗 → From で変換して即 return
 };
 ```
+
+:::message
+**2026/05/17 修正**：展開コードに `From::from(e)` を明示しました
+:::
 
 つまり `username.txt` が読み込めなかった場合、`read_username` 自体の戻り値が `Err` になります。呼び出し元はこうなります：
 
@@ -114,19 +123,25 @@ match read_username() {
 
 ネストが深くなるのを防げるだけでなく、「`?` が付いている行はエラーが起きうる」とひと目で分かります。
 
+なお `?` は `Option<T>` にも使えます。`None` のとき即 `return None` になるため、`Result` 専用の演算子ではありません。
+
 ---
 
 ## 独自エラー型と thiserror
 
 ### なぜ複数のエラーを1つの型にまとめるのか
 
-`?` を使うとき、**関数の戻り値のエラー型と発生するエラーの型が一致していないといけない**という制約があります。
+`?` は内部で `From::from(e)` を呼んでエラー型を変換します。つまり **発生したエラー型から戻り値のエラー型への `From` 実装が必要**です。
+
+:::message
+**2026/05/17 修正**：「型が一致しないといけない」→「`From` 実装が必要」に修正しました
+:::
 
 ```rust
-// ❌ エラー型が混在して ? が使えない
+// ❌ From 実装がなく ? が使えない
 fn load_config() -> Result<i32, io::Error> {  // エラー型は io::Error と宣言
-    let content = fs::read_to_string("config.txt")?; // io::Error → OK
-    let value: i32 = content.trim().parse()?;         // ParseIntError → 型が違う！
+    let content = fs::read_to_string("config.txt")?; // io::Error → OK（同じ型なので From は恒等変換）
+    let value: i32 = content.trim().parse()?;         // ParseIntError → io::Error への From 実装がない！
     Ok(value)
 }
 ```
@@ -144,7 +159,20 @@ enum AppError {
 
 ### `From` トレイトの手書きが面倒
 
-`?` は内部で `From::from(e)` を呼んで型変換しています。`io::Error → AppError` の変換を自分で実装しないと `?` が使えません：
+`?` は `From::from(e)` で自動変換しますが、**`From` 実装がなければ自動変換できません**。`.map_err(...)` で手動変換する方法もありますが、エラーの種類が増えるたびに書く必要があります：
+
+```rust
+// .map_err() で手動変換する方法
+fn load_config() -> Result<i32, AppError> {
+    let content = fs::read_to_string("config.txt")
+        .map_err(|e| AppError::Io(e))?;    // io::Error → AppError::Io に変換してから ?
+    let value: i32 = content.trim().parse()
+        .map_err(|e| AppError::Parse(e))?; // ParseIntError → AppError::Parse に変換してから ?
+    Ok(value)
+}
+```
+
+`From` 実装がなくてもこれで動きますが、呼び出し箇所が増えるたびに同じ変換コードが散らばります。`From` を実装する方法の場合も同様で、エラーの種類ごとに手書きが必要です：
 
 ```rust
 // エラーの種類ごとに From を手書きする必要がある（面倒）
